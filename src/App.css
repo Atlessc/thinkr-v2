@@ -1,123 +1,76 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chivo+Mono:wght@100&family=Lily+Script+One&display=swap');
 
-#root {
-  background: linear-gradient(0deg, rgba(253,214,255,1) 6%, rgba(214,255,250,1) 92%);
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-  margin: -7px;
-}
+
 
 * {
-  box-sizing: border-box;
-  font-size: 16px;
-}
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+  
+  .App {
+    text-align: center;
+  }
+  
+  .header {
+    font-family: 'Lily Script One', cursive;
+    color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  
+  .header h1 {
+    font-size: 2rem;
+    text-align: left;
+    padding-left: 5%;
+    color: black;
+    text-shadow: -2px 2px gray ;
+  }
+  
+  .body {
+    background: linear-gradient(0deg, rgba(253,214,255,1) 6%, rgba(214,255,250,1) 92%);
+  }
+  
+  .prompt {
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  
+  label {
+    font-family: 'Bebas Neue', cursive;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  textarea {
+    font-family: 'Chivo Mono', monospace;
+    color: rgb(0, 0, 0);
+    font-size: 1rem;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+  }
 
-
-
-@media (max-width: 768px) {
-}
-
-@media (max-width: 1024px) {
-}
-
-@media (min-width: 1280px) {
-
-.App {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  height: 800px;
-  padding-top: 2rem;
-}
-
-.header {
-  position: fixed;
-  top: 0;
-  font-family: 'Lily Script One', cursive;
-  color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.2);
-  width: 100%;
-  height: 70px;
-}
-
-.header h1 {
-  font-size: 2rem;
-  text-align: left;
-  padding-left: 5%;
-  color: black;
-  text-shadow: -2px 2px gray ;
-}
-
-.body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 70%;
-}
-
-.prompt {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  padding: 1rem;
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 5px;
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
-label {
-  font-family: 'Bebas Neue', cursive;
-  color: rgb(0, 0, 0);
-  font-weight: bold;
-  font-size: 1.5rem;
-}
-
-textarea {
-  font-family: 'Chivo Mono', monospace;
-  color: rgb(0, 0, 0);
-  font-size: 1rem;
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 5px;
-  background-color: rgb(255, 255, 255);
-}
-
-.prompt_btn {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.button {
-  font-family: 'Bebas Neue', cursive;
-  color: rgb(0, 0, 0);
-  font-weight: bold;
-  font-size: 1.3rem;
-  width: 45%;
-  height: 50px;
-  padding: 0.5rem;
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 5px;
-  background-color: rgb(255, 255, 255);
-}
-
-.response {
-  font-family: 'Chivo Mono', monospace;
-  color: rgb(255, 255, 255);
-  font-size: 1.2rem;
-  font-weight: 400;
-  width: 100%;
-  height: fit-content;
-  padding: 0.5rem;
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 5px;
-  margin-top: 5%;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-}
+  .button {
+    font-family: 'Bebas Neue', cursive;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    font-size: 1.3rem;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+  }
+  
+  .response {
+    font-family: 'Chivo Mono', monospace;
+    color: rgb(255, 255, 255);
+    font-size: 1.2rem;
+    font-weight: 400;
+    height: fit-content;
+    padding: 0.5rem;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    margin-top: 5%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  

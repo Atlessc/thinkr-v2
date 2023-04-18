@@ -48,8 +48,8 @@ function App() {
         className='textarea'
         onChange={(e) => setPrompt(e.target.value)}
         placeholder='WRITE YOUR PROMPT HERE'
-        cols={35}
-        rows={7}
+        cols={40}
+        rows={3}
         />
       <div className='prompt_btn'>
         <button className='button' onClick={callOpenAI}>Send prompt</button>
