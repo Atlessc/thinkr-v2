@@ -2,19 +2,20 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
-  const [prompt, setPrompt] = useState('')
-  const [response, setResponse] = useState('') // "negative" or "positive"
+  const [prompt, setPrompt] = useState('') // this is the prompt that the user will enter
+  const [response, setResponse] = useState('') // this is the response from the API
 
-  const API_KEY = import.meta.env.VITE_OPENAI;
+
+  const API_KEY = import.meta.env.VITE_OPENAI; // this is the API key from the .env file
 
   async function callOpenAI() {
-    console.log("calling now");
+    console.log("calling now"); // this is just to check if the function is called
 
     const APIBody = {
-      "model": "gpt-3.5-turbo",
+      "model": "gpt-4",
       "messages": [{
         "role": "assistant",
-        "content": prompt,
+        "content": "you are acomedian that can be offensive and help me solve IT issues" + prompt,
     }],
       "max_tokens": 1000,
       "temperature": 0.9,
@@ -43,6 +44,7 @@ function App() {
         <h1>Welcome to Thinkr</h1>
       </header>
       <div className='body'>
+        <div >
         <label>Prompt:</label>
         <textarea
         className='textarea'
@@ -51,6 +53,7 @@ function App() {
         cols={40}
         rows={3}
         />
+        </div>
       <div className='prompt_btn'>
         <button className='button' onClick={callOpenAI}>Send prompt</button>
       </div>
