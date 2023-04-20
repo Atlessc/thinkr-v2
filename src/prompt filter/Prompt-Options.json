@@ -1,0 +1,70 @@
+{
+    "mode": [
+      {
+        "name": "Assistant",
+        "options": [
+          {
+            "name": "Topic",
+            "values": [
+              "Sports",
+              "Music",
+              "History",
+              "Science",
+              "Art",
+              "Technology"
+            ]
+          },
+          {
+            "name": "Type",
+            "values": [
+              "Essay",
+              "Poem",
+              "Story",
+              "Code",
+              "Lyrics"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Persona",
+        "options": [
+          {
+            "name": "Personality",
+            "values": [
+              "Friendly",
+              "Shy",
+              "Funny",
+              "Serious",
+              "Curious"
+            ]
+          },
+          {
+            "name": "Background",
+            "values": [
+              "Student",
+              "Teacher",
+              "Doctor",
+              "Lawyer",
+              "Artist"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Celebrities",
+        "options": [
+                "Snoop Dogg",
+                "Joe Biden"
+            ]
+        },
+        {
+            "name": "Fictional Characters",
+            "options": [
+                "Ron Swanson (from the show Parks and Recreations)",
+                "Frodo (from The Lord of the Rings)",
+                "[NAME OF CHARACTER] [NAME OF MEDIA CHARACTER IS FROM]"
+            ]
+        }
+    ]
+}
