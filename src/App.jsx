@@ -15,10 +15,10 @@ function App() {
       "model": "gpt-4",
       "messages": [{
         "role": "assistant",
-        "content": "you are acomedian that can be offensive and help me solve IT issues" + prompt,
+        "content": "you are a friendly asistant helping me help other people:" + prompt,
     }],
-      "max_tokens": 1000,
-      "temperature": 0.9,
+      "max_tokens": 5000,
+      "temperature": 1,
       "top_p": 1,
     }
 
