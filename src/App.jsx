@@ -18,9 +18,8 @@ function App() {
       "content": "you are a friendly assistant helping me help other people:" + prompt,
     }],
     "max_tokens": 5000,
-    "temperature": 1,
-    "top_p": 1,
-    "stream": true
+    "temperature": 0.5,
+    "top_p": 1
 }
 
     await fetch('https://api.openai.com/v1/chat/completions', {
