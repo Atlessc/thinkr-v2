@@ -11,22 +11,23 @@ function App() {
   async function callOpenAI() {
     console.log("calling now"); // this is just to check if the function is called
 
-    const APIBody = {
-      "model": "gpt-4",
-      "messages": [{
-        "role": "assistant",
-        "content": "you are a friendly asistant helping me help other people:" + prompt,
+  const APIBody = {
+    "model": "gpt-4-0613",
+    "messages": [{
+      "role": "assistant",
+      "content": "you are a friendly assistant helping me help other people:" + prompt,
     }],
-      "max_tokens": 5000,
-      "temperature": 1,
-      "top_p": 1,
-    }
+    "max_tokens": 5000,
+    "temperature": 1,
+    "top_p": 1,
+    "stream": true
+}
 
     await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        "Authorization": "Bearer " + API_KEY
+        "Authorization": 'Bearer ' + API_KEY
       },
       body: JSON.stringify(APIBody)
     }).then((data) => {
@@ -36,6 +37,26 @@ function App() {
       setResponse(data.choices[0].message.content);
   })}
   console.log(prompt);
+  console.log(API_KEY);
+
+  const eventSource = new EventSource('https://api.openai.com/v1/chat/completions', {
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer ' + API_KEY
+  },
+  body: JSON.stringify(APIBody)
+});
+
+eventSource.onmessage = (event) => {
+  // handle incoming data here
+  console.log(event.data);
+};
+
+eventSource.onerror = (error) => {
+  // handle errors here
+  console.error(error);
+};
+
 
 
   return (
