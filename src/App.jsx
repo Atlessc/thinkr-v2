@@ -19,7 +19,8 @@ function App() {
     }],
     "max_tokens": 5000,
     "temperature": 0.5,
-    "top_p": 1
+    "top_p": 1,
+    "stream": true
 }
 
     await fetch('https://api.openai.com/v1/chat/completions', {
