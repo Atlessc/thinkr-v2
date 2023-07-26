@@ -37,27 +37,6 @@ function App() {
       setResponse(data.choices[0].message.content);
   })}
   console.log(prompt);
-  console.log(API_KEY);
-
-  const eventSource = new EventSource('https://api.openai.com/v1/chat/completions', {
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': 'Bearer ' + API_KEY
-  },
-  body: JSON.stringify(APIBody)
-});
-
-eventSource.onmessage = (event) => {
-  // handle incoming data here
-  console.log(event.data);
-};
-
-eventSource.onerror = (error) => {
-  // handle errors here
-  console.error(error);
-};
-
-
 
   return (
     <div className="App">
