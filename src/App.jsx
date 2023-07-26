@@ -5,38 +5,56 @@ function App() {
   const [prompt, setPrompt] = useState('') // this is the prompt that the user will enter
   const [response, setResponse] = useState('') // this is the response from the API
 
-
   const API_KEY = import.meta.env.VITE_OPENAI; // this is the API key from the .env file
 
   async function callOpenAI() {
     console.log("calling now"); // this is just to check if the function is called
 
-  const APIBody = {
-    "model": "gpt-4-0613",
-    "messages": [{
-      "role": "assistant",
-      "content": "you are a friendly assistant helping me help other people:" + prompt,
-    }],
-    "max_tokens": 5000,
-    "temperature": 0.5,
-    "top_p": 1,
-    "stream": true
-}
+    const APIBody = {
+      "model": "gpt-4-0613",
+      "messages": [{
+        "role": "assistant",
+        "content": "you are a friendly assistant helping me help other people:" + prompt,
+      }],
+      "max_tokens": 5000,
+      "temperature": 1,
+      "top_p": 1,
+      "stream": true
+    }
 
-    await fetch('https://api.openai.com/v1/chat/completions', {
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        "Authorization": 'Bearer ' + API_KEY
+        'Authorization': 'Bearer ' + API_KEY
       },
       body: JSON.stringify(APIBody)
-    }).then((data) => {
-      return data.json();
-    }).then((data) => {
-      console.log(data);
-      setResponse(data.choices[0].message.content);
-  })}
-  console.log(prompt);
+    });
+
+    const reader = response.body.getReader();
+
+    let message = '';
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+
+      message += new TextDecoder().decode(value);
+      const lines = message.split('\n');
+      message = lines.pop();
+
+      for (const line of lines) {
+        // split the line on the first colon and space
+        const [fieldName, fieldValue] = line.split(/: (.+)/);
+
+        // parse the field value as JSON
+        const data = JSON.parse(fieldValue);
+
+        // handle incoming data here
+        console.log(data);
+        setResponse(data.choices[0].text);
+      }
+    }
+  }
 
   return (
     <div className="App">
@@ -45,25 +63,25 @@ function App() {
       </header>
       <div className='body'>
         <div >
-        <label>Prompt:</label>
-        <textarea
-        className='textarea'
-        onChange={(e) => setPrompt(e.target.value)}
-        placeholder='WRITE YOUR PROMPT HERE'
-        cols={40}
-        rows={3}
-        />
+          <label>Prompt:</label>
+          <textarea
+            className='textarea'
+            onChange={(e) => setPrompt(e.target.value)}
+            placeholder='WRITE YOUR PROMPT HERE'
+            cols={40}
+            rows={3}
+          />
         </div>
-      <div className='prompt_btn'>
-        <button className='button' onClick={callOpenAI}>Send prompt</button>
-      </div>
-      <div className='response'>
-        {response !== "" ?
-          <p>{response}</p>
-          :
-          null
-      }
-      </div>
+        <div className='prompt_btn'>
+          <button className='button' onClick={callOpenAI}>Send prompt</button>
+        </div>
+        <div className='response'>
+          {response !== "" ?
+            <p>{response}</p>
+            :
+            null
+          }
+        </div>
       </div>
     </div>
   )
