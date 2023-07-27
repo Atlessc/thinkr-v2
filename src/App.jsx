@@ -19,41 +19,21 @@ function App() {
       "max_tokens": 5000,
       "temperature": 1,
       "top_p": 1,
-      "stream": true
     }
 
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + API_KEY
       },
       body: JSON.stringify(APIBody)
-    });
-
-    const reader = response.body.getReader();
-
-    let message = '';
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-
-      message += new TextDecoder().decode(value);
-      const lines = message.split('\n');
-      message = lines.pop();
-
-      for (const line of lines) {
-        // split the line on the first colon and space
-        const [fieldName, fieldValue] = line.split(/: (.+)/);
-
-        // parse the field value as JSON
-        const data = JSON.parse(fieldValue);
-
-        // handle incoming data here
-        console.log(data);
-        setResponse(data.choices[0].text);
-      }
-    }
+    }).then((data) => {
+      return data.json();
+    }).then((data) => {
+      console.log(data);
+      setResponse(data.choices[0].text);
+    })
   }
 
   return (
