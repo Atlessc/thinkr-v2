@@ -32,7 +32,7 @@ function App() {
       return data.json();
     }).then((data) => {
       console.log(data);
-      setResponse(data.choices[0].text);
+      setResponse(data.choices[0].message.content);
     })
   }
 
