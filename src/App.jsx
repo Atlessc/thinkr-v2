@@ -11,12 +11,12 @@ function App() {
     console.log("calling now"); // this is just to check if the function is called
 
     const APIBody = {
-      "model": "gpt-4-0613",
+      "model": "gpt-4-1106-preview",
       "messages": [{
         "role": "assistant",
         "content": "you are a friendly assistant helping me help other people:" + prompt,
       }],
-      "max_tokens": 5000,
+      "max_tokens": 1000,
       "temperature": 1,
       "top_p": 1,
     }
